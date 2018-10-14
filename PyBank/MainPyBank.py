@@ -28,12 +28,11 @@ with open(file, 'r') as csvfile:
         Month.append(str(row[0]))
 
     MonthlyDifference = [(PL[i+1]) - (PL[i]) for i in range(len(PL)-1)]       
+    DiffSum = sum(MonthlyDifference)
+    AverageChange = DiffSum/((TotalMonths)-1)
 
-    for i in range(len(MonthlyDifference)-1) :
+    for i in range(len(MonthlyDifference)-1):
         
-        print(i)
-    
-
         if int(MonthlyDifference[i]) >= GreatestIncrease:
             GreatestIncrease = int(MonthlyDifference[i])
             GreatestIncreaseDate = Month[i+1]
@@ -42,29 +41,14 @@ with open(file, 'r') as csvfile:
             GreatestDecrease = int(MonthlyDifference[i])
             GreatestDecreaseDate = Month[i+1]
 
-
-
-        
-    print(f"{MonthlyDifference}")
-    print(GreatestIncrease)
-    print(GreatestIncreaseDate)
-    print(GreatestDecrease)
-    print(GreatestDecreaseDate)
-    DiffSum = sum(MonthlyDifference)
-    #print(DiffSum)    
     
-    AverageChange = DiffSum/((TotalMonths)-1)
-    #print(AverageChange)
-
-
-
 
 print("Financial Analysis")
 print("-------------------------")
 print("Total Months: " + str(TotalMonths))
 print("Total Profit: $" + str(TotalProfit))
-#print("Greatest Increase in Profits: " + GreatestIncreaseDate + " $" + str(GreatestIncrease))
-#print("Greatest Decrease in Profits: " + GreatestDecreaseDate + " $" + str(GreatestDecrease))
+print("Greatest Increase in Profits: " + GreatestIncreaseDate + " $" + str(GreatestIncrease))
+print("Greatest Decrease in Profits: " + GreatestDecreaseDate + " $" + str(GreatestDecrease))
 print("Average Change: $" + str(AverageChange))
 
 Output = open("Output/output.txt", "w")
@@ -73,6 +57,6 @@ Output.write("Financial Analysis \n")
 Output.write("------------------------- \n")
 Output.write("Total Months: " + str(TotalMonths) + "\n")
 Output.write("Total Profit: $" + str(TotalProfit) + "\n")
-#Output.write("Greatest Increase in Profits: " + GreatestIncreaseDate + " $" + str(GreatestIncrease) + "\n")
-#Output.write("Greatest Decrease in Profits: " + GreatestDecreaseDate + " $" + str(GreatestDecrease) + "\n")
+Output.write("Greatest Increase in Profits: " + GreatestIncreaseDate + " $" + str(GreatestIncrease) + "\n")
+Output.write("Greatest Decrease in Profits: " + GreatestDecreaseDate + " $" + str(GreatestDecrease) + "\n")
 Output.write("Average Change: $" + str(AverageChange) + "\n")
